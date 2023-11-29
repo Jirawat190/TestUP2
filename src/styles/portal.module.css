@@ -1,0 +1,35 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 19rem;
+    position: relative;
+  }
+  
+  .box {
+    width: 100%;
+    height: 130px;
+    position: absolute;
+    border-radius: 0px 0px 12px 12px ;
+    margin: 0;
+    font-size: 20px;
+    font-weight: bold;
+    color: #24699d;
+    background-color: #f1f0e8;
+    padding: 20px;
+    transition: transform 0.3s ease;
+
+  }
+  
+  /* เมื่อ hover กล่อง */
+  .box:hover {
+    transform: translateY(-20px);
+  }
+
+  .menu{
+    color: #ffffff;
+    margin-Top: 25px;
+    font-Weight: bold;
+    background-Color: #21266e;
+  }
