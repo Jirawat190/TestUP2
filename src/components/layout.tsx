@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, ReactNode } from 'react'
 import { Layout, MenuProps, Card, Col, Row, Modal, Typography, Space, Avatar, Dropdown, Breadcrumb, theme, Menu } from 'antd/lib';
 import Image from "next/image";
 import { FileOutlined, DownCircleOutlined, UserOutlined, HomeOutlined, FileDoneOutlined, EnvironmentOutlined, SwitcherOutlined, ProfileOutlined, ReadOutlined, ReconciliationOutlined, SettingOutlined, ExceptionOutlined } from '@ant-design/icons';
@@ -12,16 +12,43 @@ const pageLogout = () => {
   router.push('/login')
 }
 
+const pagehome = (event: React.MouseEvent) => {
+  router.push('/homesetting')
+}
+
+const pagemer = (event: React.MouseEvent) => {
+  router.push('/mersetting')
+}
+
 
 
 const items: MenuProps['items'] = [
   {
     label:
       <Col>
-        <Row><Text strong className='mr-1 text-lg' style={{ color: '#F17444' }}>Role :</Text><Text className='text-lg'>พนักงานคลังสินค้า</Text></Row>
+        <Row onClick={pagehome}><Text strong className='mr-1 text-lg' style={{ color: '#F17444' }}>Role :</Text><Text className='text-lg'>Admin คลังสินค้า</Text></Row>
+      </Col>,
+    key: '1'
+
+  },
+  {
+    label:
+      <Col>
+        <Row onClick={pagemer}><Text strong className='mr-1 text-lg' style={{ color: '#F17444' }}>Role :</Text><Text className='text-lg'>Mer</Text></Row>
+      </Col>,
+    key: '2'
+
+  },
+  {
+    type: 'divider',
+    style: { borderColor: '#E0E0E0', borderWidth: '1px', },
+  },
+  {
+    label:
+      <Col>
         <Row><Text strong className='mr-1 text-lg' style={{ color: '#F17444' }}>Name :</Text><Text className='text-lg'>กาลครั้งหนึ่ง  ดุจพินิจ</Text></Row>
       </Col>,
-    key: '0'
+    key: '3'
 
   },
   {
@@ -34,7 +61,7 @@ const items: MenuProps['items'] = [
       <Row justify={'center'}>
         <button onClick={pageLogout}><Text strong className='mr-1 text-lg ' style={{ color: '#005390' }}>ออกจากระบบ</Text></button>
       </Row>,
-    key: '1',
+    key: '4',
   },
 ];
 
@@ -44,31 +71,38 @@ function getItem(
   label: React.ReactNode,
   key: React.Key,
   icon?: React.ReactNode,
-  children?: MenuItem[],
+  items?: MenuItem[],
   style?: React.CSSProperties,
+  onClick?: (event: React.MouseEvent) => void
 ): MenuItem {
   return {
     key,
     icon,
-    children,
     label,
+    items,
     style,
+    onClick,
   } as MenuItem;
 }
 
 const menuitems: MenuItem[] = [
-  getItem('หน้าหลัก', '1', <HomeOutlined />, undefined,),
-  getItem('ติดตามรายการพัสดุ', '2', <EnvironmentOutlined />, undefined,),
-  getItem('นำเข้าโปรโมชั่น', '3', <SwitcherOutlined />, undefined,),
-  getItem('สร้างโปรโมชั่น', '4', <ProfileOutlined />, undefined,),
-  getItem('รายงานเงินพักรับ', '5', <ReadOutlined />, undefined,),
+  getItem('หน้าหลัก', '1', <HomeOutlined />, undefined, undefined, pagehome),
+  getItem('ติดตามรายการพัสดุ', '2', <EnvironmentOutlined />, undefined),
+  getItem('นำเข้าโปรโมชั่น', '3', <SwitcherOutlined />, undefined),
+  getItem('สร้างโปรโมชั่น', '4', <ProfileOutlined />, undefined),
+  getItem('รายงานเงินพักรับ', '5', <ReadOutlined />, undefined),
   getItem('ใบเสร็จรับเงิน/ใบกำกับภาษี', '6', <FileDoneOutlined />, undefined, { fontSize: '10px' }),
-  getItem('รายการใบแจ้งหนี้', '7', <ReconciliationOutlined />, undefined,),
-  getItem('รายการลดหนี้', '8', <FileOutlined />, undefined,),
-  getItem('จัดการข้อมูลลูกค้า', '9', <UserOutlined />, undefined,),
-  getItem('ตั้งค่าระบบ', '10', <SettingOutlined />, undefined,),
-  getItem('รายงาน', '11', <ExceptionOutlined />, undefined,),
+  getItem('รายการใบแจ้งหนี้', '7', <ReconciliationOutlined />, undefined),
+  getItem('รายการลดหนี้', '8', <FileOutlined />, undefined),
+  getItem('จัดการข้อมูลลูกค้า', '9', <UserOutlined />, [
+    getItem('ข้อมูลลูกค้าเก่า', '9.1'),
+    getItem('อัปโหลดข้อมูลลูกค้า', '9.2'),
+    getItem('จัดการคำขอ', '9.3'),
+  ]),
+  getItem('ตั้งค่าระบบ', '10', <SettingOutlined />, undefined),
+  getItem('รายงาน', '11', <ExceptionOutlined />, undefined),
 ];
+
 
 const headerStyle: React.CSSProperties = {
   backgroundColor: '#ffffff',
@@ -77,9 +111,10 @@ const headerStyle: React.CSSProperties = {
   paddingInline: 20,
 };
 
+interface Layoutpop { children: ReactNode; }
 
 
-export default function layout() {
+export default function layout({ children }: Layoutpop) {
   const [collapsed, setCollapsed] = useState(false);
 
   const handleMouseEnter = () => {
@@ -106,7 +141,7 @@ export default function layout() {
 
   return (
     <>
-    {/* ส่วนของ  header */}
+      {/* ส่วนของ  header */}
       <Header style={headerStyle}>
         <Row className='w-full'>
           <Col className='w-9/12'>
@@ -160,29 +195,25 @@ export default function layout() {
           onMouseLeave={handleMouseLeave}
           className='hover:bg-black'
           style={{ color: '#ffffff', backgroundColor: '#21266e' }}>
+
           <Menu
             mode="inline"
             items={menuitems}
             style={menu}
             className=''
           />
+          
         </Sider>
 
         {/* ส่วนเนื้อหา */}
         <Layout>
           <Content style={{ margin: '0 16px' }}>
-            <Breadcrumb style={{ margin: '16px 0', backgroundColor: '#ffffff', padding: '20px', borderRadius: '20px' }}>
-              <Breadcrumb.Item>หน้าแรก</Breadcrumb.Item>
-              <Breadcrumb.Item>ตั้งค่าระบบ</Breadcrumb.Item>
-            </Breadcrumb>
-            <div style={{ padding: 24, minHeight: 360, background: '#ffffff', borderRadius: '20px' }}>
-              content
-            </div>
+            {children}
           </Content>
         </Layout>
 
       </Layout>
 
     </>
-  )
+  );
 }

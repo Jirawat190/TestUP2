@@ -1,0 +1,110 @@
+.cardcontainer {
+    :global {
+        width: 100%;
+        margin-top: -25px;
+
+        .ant-tabs-tab {
+            width: 100%;
+            border: 0px !important;
+            background-color: #ffffff !important;
+            justify-content: center;
+            font-weight: bold !important;
+            color: #21266e !important;
+            font-size: large !important;
+        }
+        
+        .ant-tabs-nav-list {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+        }
+
+        .ant-tabs .ant-tabs-nav .ant-tabs-nav-wrap {
+            border-bottom: 3px solid #acadc8 !important;
+        }
+
+        .ant-tabs-nav-operations {
+            display: none !important;
+        }
+
+        .ant-tabs-tab-active {
+            background-color: #21266e !important;
+            color: #ffffff !important;
+        }
+
+        .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+            color: #ffffff !important;
+        }
+
+        //ปิดตัวเลือกรายการว่าจะให้แสดงที่แถว
+        .ant-pagination .ant-pagination-options {
+            display: none;
+        }
+    }
+}
+
+
+.ExpeditedCard {
+    :global {
+        width: 100%;
+        background-color: #ffffff;
+        border-radius: '8px';
+        padding-top: 15px;
+
+        .ant-tabs-tab {
+            width: 100%;
+            justify-content: center;
+            font-size: large !important;
+            font-weight: bold !important;
+            background-color: #F3F3F3 !important;
+        }
+
+        .ant-tabs .ant-tabs-nav .ant-tabs-nav-wrap {
+            border-bottom: 0px solid #000000 !important;
+        }
+
+        .ant-tabs-nav-list {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+           display: block;
+           margin-left: auto;
+           margin-right: auto;
+           font-weight: bold;
+
+        }
+
+        .ant-tabs-nav-operations {
+            display: none !important;
+        }
+
+        .ant-tabs-tab-active {
+            background-color: #21266E !important;
+            color: #fff !important;
+            border-radius: 8px !important;
+        }
+
+
+        .ant-tabs .ant-tabs-tab.ant-tabs-tab-active .ant-tabs-tab-btn {
+            color: #fff !important;
+            font-weight: bold !important;
+        }
+
+        .ant-tabs-nav .ant-tabs-tab {
+            border: 0;
+            padding: 12px 0;
+        }
+
+        .ant-tabs-nav-list {
+            background-color: #F3F3F3 !important;
+            border-radius: 8px !important;
+        } 
+
+        // //ลบตัวเลือกหน้าตารางของ ตั้งค่าภูมิภาคของ Courier
+        // .ant-table-wrapper .ant-table-pagination.ant-pagination {
+        //     display: none;
+        //  }  
+    }
+}

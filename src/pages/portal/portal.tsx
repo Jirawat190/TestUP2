@@ -14,6 +14,11 @@ const pageLogout = () => {
   router.push('/login')
 }
 
+const pagehome = () => {
+  router.push('/homesetting')
+}
+
+
 const items: MenuProps['items'] = [
   {
     label:
@@ -106,13 +111,15 @@ const Portal: React.FC = () => (
 
       <Row style={contentStyle}>
         <Card headStyle={{ border: 0, padding: '25px' }} title={<Text className="text-2xl" style={{ color: "#191970", fontWeight: "bold" }}> Portal </Text>} style={{ width: "100%" }}>
-          
-          <Row gutter={8} style={{ textAlign: 'center'}} align={'middle'}>
-            
+
+          <Row gutter={8} style={{ textAlign: 'center' }} align={'middle'}>
+
             <Col span={8} className='justify-center flex'>
-              <Card className='bg-[#96b6c5] h-48 w-80' bodyStyle={{ padding: 0}}>
+              <Card className='bg-[#96b6c5] h-48 w-80' bodyStyle={{ padding: 0 }}>
                 <Row className={styles.container} align={'bottom'}>
-                  <Row className={styles.box} align={'middle'} justify={'center'}>ระบบบริหารจัดการพัสดุ</Row>
+                  <Row onClick={pagehome} className={styles.portal} justify={'center'} align={'middle'}>
+                    <div>ระบบบริหารจัดการพัสดุ</div>
+                  </Row>
                 </Row>
               </Card>
             </Col>
@@ -120,7 +127,9 @@ const Portal: React.FC = () => (
             <Col span={8} className='justify-center flex'>
               <Card className='bg-[#c3acd0] h-48 w-80' bodyStyle={{ padding: 0 }}>
                 <Row className={styles.container} align={'bottom'}>
-                  <Row className={styles.box} align={'middle'} justify={'center'}>ระบบบริการลูกค้า All Speedy</Row>
+                  <Row className={styles.portal} justify={'center'} align={'middle'}>
+                    <div>ระบบบริการลูกค้า All Speedy</div>
+                  </Row>
                 </Row>
 
               </Card>
@@ -128,7 +137,9 @@ const Portal: React.FC = () => (
             <Col span={8} className='justify-center flex'>
               <Card className='bg-[#ceddbd] h-48 w-80' bodyStyle={{ padding: 0 }}>
                 <Row className={styles.container} align={'bottom'}>
-                  <Row className={styles.box} align={'middle'} justify={'center'}>ระบบจัดการงานขนส่งพัสดุ</Row>
+                  <Row className={styles.portal} justify={'center'} align={'middle'}>
+                    <div>ระบบจัดการงานขนส่งพัสดุ</div>
+                  </Row>
                 </Row>
 
               </Card>

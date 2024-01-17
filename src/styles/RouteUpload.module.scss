@@ -1,0 +1,41 @@
+.cardcontainer {
+    :global {
+        width: 100%;
+        margin-top: -35px;
+
+        .table {
+            width: 100%;
+            border: 0px !important;
+            background-color: #ffffff !important;
+            justify-content: center;
+            color: #21266e !important;
+            font-size: large !important;
+            text-align: center !important;
+        }
+        .custom-table {
+            margin-top: 5px;
+          }
+          
+          .custom-table .ant-table-thead tr th {
+            background-color: #d9e8ff;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+          }
+          
+          .custom-table td {
+            text-align: center;
+          }
+          
+          .even-row {
+            background-color: #fff;
+            /* White background for even rows */
+          }
+          
+          .odd-row {
+            background-color: #f0f0f0;
+            box-shadow: 0px 3px 20px grey;
+          }
+    }
+}
+
